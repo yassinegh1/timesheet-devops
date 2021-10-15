@@ -51,7 +51,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		return dep.getId();
 	}
 	
-	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
+/*	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
 		//Le bout Master de cette relation N:1 est departement  
 				//donc il faut rajouter l'entreprise a departement 
 				// ==> c'est l'objet departement(le master) qui va mettre a jour l'association
@@ -70,9 +70,9 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		catch(Exception e){
 			l.error("Error in affecterDepartementAEntreprise method", e);
 		}
-	}
+	}*/
 	
-	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
+	/*public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
 		List<String> depNames = new ArrayList<>();
 
 		try {
@@ -91,7 +91,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		}
 		return depNames;
 	}
-
+*/
 	@Transactional
 	public void deleteEntrepriseById(int entrepriseId) {
 		try {

@@ -28,7 +28,7 @@ public class Departement implements Serializable {
 	private String name;
 	
 	//@JsonManagedReference 
-	@JsonIgnore
+	/*@JsonIgnore
 	@ManyToMany
 	private List<Employe> employes;
 	
@@ -37,7 +37,7 @@ public class Departement implements Serializable {
 	
 	@ManyToOne
 	private Entreprise entreprise;
-
+*/
 	public Departement() {
 		super();
 	}
@@ -62,7 +62,7 @@ public class Departement implements Serializable {
 		this.name = name;
 	}
 
-	public List<Employe> getEmployes() {
+/*	public List<Employe> getEmployes() {
 		return employes;
 	}
 
@@ -85,7 +85,7 @@ public class Departement implements Serializable {
 	public void setEntreprise(Entreprise entreprise) {
 		this.entreprise = entreprise;
 	}
-	
+	*/
 	
 
 }

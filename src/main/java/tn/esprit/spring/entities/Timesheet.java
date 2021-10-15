@@ -16,7 +16,7 @@ public class Timesheet implements Serializable{
 	private TimesheetPK timesheetPK;
 	
 	//idMission est a la fois primary key et foreign key
-	@ManyToOne
+/*	@ManyToOne
     @JoinColumn(name = "idMission", referencedColumnName = "id", insertable=false, updatable=false)
 	private Mission mission;
 	
@@ -25,7 +25,7 @@ public class Timesheet implements Serializable{
 	@ManyToOne
     @JoinColumn(name = "idEmploye", referencedColumnName = "id", insertable=false, updatable=false)
 	private Employe employe;
-	
+	*/
 	
 	private boolean isValide;
 	
@@ -46,7 +46,7 @@ public class Timesheet implements Serializable{
 		this.timesheetPK = timesheetPK;
 	}
 
-	public Mission getMission() {
+/*	public Mission getMission() {
 		return mission;
 	}
 
@@ -61,7 +61,7 @@ public class Timesheet implements Serializable{
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
-
+*/
 	
 	
 }

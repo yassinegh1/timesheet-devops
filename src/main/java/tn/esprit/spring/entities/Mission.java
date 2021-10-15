@@ -22,13 +22,13 @@ public class Mission implements Serializable {
 	private String name;
 	
 	private String description;
-	
+	/*
 	@ManyToOne
 	private Departement departement;
 	
 	@OneToMany(mappedBy="mission")
 	private  List<Timesheet> timesheets;
-	
+	*/
 	public Mission() {
 		super();
 	}
@@ -63,7 +63,7 @@ public class Mission implements Serializable {
 		this.description = description;
 	}
 
-	public Departement getDepartement() {
+	/*public Departement getDepartement() {
 		return departement;
 	}
 
@@ -78,7 +78,7 @@ public class Mission implements Serializable {
 	public void setTimesheets(List<Timesheet> timesheets) {
 		this.timesheets = timesheets;
 	}
-	
+	*/
 	
 
 }
