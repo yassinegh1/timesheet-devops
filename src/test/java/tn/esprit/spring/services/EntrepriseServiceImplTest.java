@@ -19,13 +19,16 @@ import junit.framework.*;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
+import tn.esprit.spring.repository.EntrepriseRepository;
 
 @SpringBootTest
-class EntrepriseServiceImplTest {
+public class EntrepriseServiceImplTest {
 	private static final Logger l = LogManager.getLogger(EntrepriseServiceImplTest.class);
 	
 	@Autowired
 	IEntrepriseService es;
+	@Autowired
+	EntrepriseRepository er;
 	@Autowired
 	DepartementRepository deptRepoistory;
 	
@@ -71,27 +74,42 @@ class EntrepriseServiceImplTest {
 		 List<String> listDep = es.getAllDepartementsNamesByEntreprise(entrepriseId)
 	}*/
 	
-	@Test
+/*	@Test
 	public void testDeleteEntrepriseById() {
-		es.deleteEntrepriseById(1);
-		assertNull(es.getEntrepriseById(1));
-	}
+		l.info("Starting delete Entreprise test method");
+		Entreprise e = new Entreprise("test");
+		int id = es.ajouterEntreprise(e);
+		Entreprise ent = es.getEntrepriseById(id);
+		assertNotNull(ent);
+		//int lengthBeforeDelete = ((Object) er.findAll()).size();
+		es.deleteDepartementById(id);
+		
+		
+	//	es.deleteEntrepriseById(1);
+		//assertNull(es.getEntrepriseById(1));
+	}*/
 	
 	/*@Test
 	public void testDeleteDepartementById() {
 		es.deleteDepartementById(3);
 		assertNull(es.getEntrepriseById(3));
 			}*/
-	
+	/*
 	@Test
-	@Order(2)
 	public void testGetEntrepriseById() {
-		Entreprise entRetrieved = es.getEntrepriseById(1);
-		assertEquals(1L, entRetrieved.getId());
-	}
-	
+	l.info("Starting find Entreprise test method");
+	Entreprise e = new Entreprise("test get entreprise");
+	int id = es.ajouterEntreprise(e);
+	assertNotNull(es.getEntrepriseById(id));
+	l.info("Entreprise with id " + id + " added" );
+	Entreprise ent = es.getEntrepriseById(id);
+	assertNotNull(ent);	
+	l.info("Entreprise with id " + ent.getId() + " found successfully" );
+	es.deleteEntrepriseById(id);
+		}
+	*/
 }
-/*
+/*00000
 	public int ajouterEntreprise(Entreprise entreprise);
 	public int ajouterDepartement(Departement dep);
 	void affecterDepartementAEntreprise(int depId, int entrepriseId);
@@ -99,4 +117,4 @@ class EntrepriseServiceImplTest {
 	public void deleteEntrepriseById(int entrepriseId);
 	public void deleteDepartementById(int depId);
 	public Entreprise getEntrepriseById(int entrepriseId);
- */
+ 00000 */

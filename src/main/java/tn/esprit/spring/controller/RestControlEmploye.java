@@ -57,18 +57,18 @@ public class RestControlEmploye {
 		
 	}
 	// http://localhost:8081/SpringMVC/servlet/affecterEmployeADepartement/1/1
-	/*@PutMapping(value = "/affecterEmployeADepartement/{idemp}/{iddept}") 
+	@PutMapping(value = "/affecterEmployeADepartement/{idemp}/{iddept}") 
 	public void affecterEmployeADepartement(@PathVariable("idemp")int employeId, @PathVariable("iddept")int depId) {
 		iemployeservice.affecterEmployeADepartement(employeId, depId);
 		
-	}*/
+	}
 	
 	// http://localhost:8081/SpringMVC/servlet/desaffecterEmployeDuDepartement/1/1
-	/*@PutMapping(value = "/desaffecterEmployeDuDepartement/{idemp}/{iddept}") 
+	@PutMapping(value = "/desaffecterEmployeDuDepartement/{idemp}/{iddept}") 
 	public void desaffecterEmployeDuDepartement(@PathVariable("idemp")int employeId, @PathVariable("iddept")int depId)
 	{
 		iemployeservice.desaffecterEmployeDuDepartement(employeId, depId);
-	}*/
+	}
 
 	// http://localhost:8081/SpringMVC/servlet/ajouterContrat
 	//{"reference":6,"dateDebut":"2020-03-01","salaire":2000,"typeContrat":"CDD"}
@@ -80,11 +80,11 @@ public class RestControlEmploye {
 	}
 	
 	// http://localhost:8081/SpringMVC/servlet/affecterContratAEmploye/6/1
-  /* @PutMapping(value = "/affecterContratAEmploye/{idcontrat}/{idemp}") 
+   @PutMapping(value = "/affecterContratAEmploye/{idcontrat}/{idemp}") 
 	public void affecterContratAEmploye(@PathVariable("idcontrat")int contratId, @PathVariable("idemp")int employeId)
 	{
 		iemployeservice.affecterContratAEmploye(contratId, employeId);
-	}*/
+	}
 
 	
    
@@ -96,12 +96,12 @@ public class RestControlEmploye {
 	}
 
     // URL : http://localhost:8081/SpringMVC/servlet/deleteEmployeById/1
-  /*  @DeleteMapping("/deleteEmployeById/{idemp}") 
+    @DeleteMapping("/deleteEmployeById/{idemp}") 
 	@ResponseBody 
 	public void deleteEmployeById(@PathVariable("idemp")int employeId) {
 		iemployeservice.deleteEmployeById(employeId);
 		
-	}*/
+	}
     
  // URL : http://localhost:8081/SpringMVC/servlet/deleteContratById/2
     @DeleteMapping("/deleteContratById/{idcontrat}") 

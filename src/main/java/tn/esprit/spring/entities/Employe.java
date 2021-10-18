@@ -44,7 +44,7 @@ public class Employe implements Serializable {
 	private Role role;
 	
 	//@JsonBackReference  
-	/*@JsonIgnore
+	@JsonIgnore
 	@ManyToMany(mappedBy="employes",fetch=FetchType.EAGER )
 	//@NotNull
 	private List<Departement> departements;
@@ -59,7 +59,7 @@ public class Employe implements Serializable {
 	@OneToMany(mappedBy="employe")
 	private List<Timesheet> timesheets;
 	
-	*/
+	
 	public Employe() {
 		super();
 	}
@@ -120,7 +120,7 @@ public class Employe implements Serializable {
 		this.role = role;
 	}
 
-	/*public List<Departement> getDepartements() {
+	public List<Departement> getDepartements() {
 		return departements;
 	}
 
@@ -144,6 +144,6 @@ public class Employe implements Serializable {
 		this.timesheets = timesheets;
 	}
 	
-	*/
+	
 	
 }

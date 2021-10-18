@@ -43,7 +43,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 	}
 
-/*	@Transactional	
+	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
 		Departement depManagedEntity = deptRepoistory.findById(depId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
@@ -59,8 +59,8 @@ public class EmployeServiceImpl implements IEmployeService {
 
 		}
 
-	}*/
-/*	@Transactional
+	}
+	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
 		Departement dep = deptRepoistory.findById(depId).get();
@@ -73,26 +73,26 @@ public class EmployeServiceImpl implements IEmployeService {
 			}
 		}
 	}
-*/
+
 	public int ajouterContrat(Contrat contrat) {
 		contratRepoistory.save(contrat);
 		return contrat.getReference();
 	}
 
-	/*public void affecterContratAEmploye(int contratId, int employeId) {
+	public void affecterContratAEmploye(int contratId, int employeId) {
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 
 		contratManagedEntity.setEmploye(employeManagedEntity);
 		contratRepoistory.save(contratManagedEntity);
 		
-	}*/
+	}
 
 	public String getEmployePrenomById(int employeId) {
 		Employe employeManagedEntity = employeRepository.findById(employeId).get();
 		return employeManagedEntity.getPrenom();
 	}
-	/*public void deleteEmployeById(int employeId)
+	public void deleteEmployeById(int employeId)
 	{
 		Employe employe = employeRepository.findById(employeId).get();
 
@@ -105,7 +105,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 		employeRepository.delete(employe);
 	}
-*/
+
 	public void deleteContratById(int contratId) {
 		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
 		contratRepoistory.delete(contratManagedEntity);

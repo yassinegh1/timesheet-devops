@@ -38,11 +38,11 @@ public class RestControlTimesheet {
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/affecterMissionADepartement/4/4
-	/*@PutMapping(value = "/affecterMissionADepartement/{idmission}/{iddept}") 
+	@PutMapping(value = "/affecterMissionADepartement/{idmission}/{iddept}") 
 	public void affecterMissionADepartement(@PathVariable("idmission") int missionId, @PathVariable("iddept") int depId) {
 		itimesheetservice.affecterMissionADepartement(missionId, depId);
 
-	}*/
+	}
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterTimesheet
     //{"missionId":1,"employeId":2,"dateDebut":"2020-03-01","dateFin":"2021-03-01"}
@@ -55,11 +55,11 @@ public class RestControlTimesheet {
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/affecterMissionADepartement/4/4
-	/*@PutMapping(value = "/validerTimesheet/{idmission}/{iddept}") 
+	@PutMapping(value = "/validerTimesheet/{idmission}/{iddept}") 
 	public void validerTimesheet(int missionId, int employeId, Date dateDebut, Date dateFin, int validateurId) {
 		itimesheetservice.validerTimesheet(missionId, employeId, dateDebut, dateFin, validateurId);
 
-	}*/
+	}
 	
 	// URL : http://localhost:8081/SpringMVC/servlet/findAllMissionByEmployeJPQL/1
     @GetMapping(value = "findAllMissionByEmployeJPQL/{idemp}")
