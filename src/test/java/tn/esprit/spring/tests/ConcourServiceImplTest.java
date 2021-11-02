@@ -46,10 +46,10 @@ public class ConcourServiceImplTest {
 		}
 	@Test
 	public void ajouterettesterliste() {
-		int x;
+		int n;
 		List<Concour> lista=new ArrayList();
 		lista=cs.getAllConcours();
-		x= lista.size()+1;
+		n= lista.size()+1;
 		
 		try {
 			Concour c = new Concour(null, "Info", 0, 0);
@@ -63,7 +63,7 @@ public class ConcourServiceImplTest {
 		try {
 			List<Concour> lista2=new ArrayList();
 			lista2=cs.getAllConcours();
-			assertEquals(x,lista2.size() );
+			assertEquals(n,lista2.size() );
 			l.info("taille incrémenté de 1");
 			} catch (NullPointerException e) {
 				l.error(e.getMessage());
