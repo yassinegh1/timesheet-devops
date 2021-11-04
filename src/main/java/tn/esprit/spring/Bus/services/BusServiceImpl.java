@@ -1,6 +1,7 @@
 package tn.esprit.spring.Bus.services;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +57,7 @@ public class BusServiceImpl implements IBusService {
  ......................................................................................*/
    	
 	public Bus GetBusByID(Long BusId){
-		return busrepository.findById(BusId).orElse(null);
+		return busrepository.findById(BusId);
 	}
 
 	public List<Bus> getAllBus() {
@@ -119,11 +120,16 @@ public class BusServiceImpl implements IBusService {
   
 	@Override
 	public Bus updateBus(Bus bus){
-		Bus existingBus = busrepository.findById(bus.getId()).orElse(null);
-		existingBus.setDestination(bus.getDestination());
-		existingBus.setHeureDepartMatin(bus.getHeureDepartMatin());
-		existingBus.setHeureDepartAprès_Midi(bus.getHeureDepartAprès_Midi());
-		return busrepository.save(existingBus);
+		try{
+			Bus existingBus = busrepository.findById(bus.getId());
+			existingBus.setDestination(bus.getDestination());
+			existingBus.setHeureDepartMatin(bus.getHeureDepartMatin());
+			existingBus.setHeureDepartAprès_Midi(bus.getHeureDepartAprès_Midi());
+			return busrepository.save(existingBus);
+
+		}catch (Exception e) {
+			return null;
+			}
 	}
 		
 		
@@ -149,7 +155,7 @@ public class BusServiceImpl implements IBusService {
 	
 	@Override
 	public String DeleteBus (Long BusId){
-		Bus existingBus = busrepository.findById(BusId).orElse(null);
+		Bus existingBus = busrepository.findById(BusId);
 		busrepository.delete(existingBus);
 		return ("Bus deleted Successfully.");
 	}
