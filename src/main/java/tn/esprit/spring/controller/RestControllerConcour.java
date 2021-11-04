@@ -1,5 +1,6 @@
 package tn.esprit.spring.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,8 @@ public class RestControllerConcour {
 	@PostMapping("/ajouterConcour")
 	@ResponseBody
 	public int ajouterContrat(@RequestBody Concour concour) {
+		
+		concour.setDateDebut(new Date());
 		concourservice.ajouterConcour(concour);
 		return concour.getIdCandidat();
 	}

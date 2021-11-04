@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,38 +73,40 @@ public class ConcourServiceImplTest {
 	}
 		
 		
-		 /*@Test
+	  @Test
 		public void testUpdateDepartement() {
 			try {
-			Departement D = new Departement("Info");
-			int Id = ds.ajouterDepartement(D);
-			D.setName("Biologie");
-			ds.ajouterDepartement(D);
-			assertEquals("Biologie", D.getName());
-			l.info("End Update Department test method");
+			Concour D = new Concour(new Date(), 15, "Admission chef Departement");
+			
+			
+			int Id = cs.ajouterConcour(D);
+			D.setType("Admission chef projet");
+			cs.ajouterConcour(D);
+			assertEquals("Admission chef projet", D.getType());
+			l.info("End Update Concour test method");
 			} catch (NullPointerException e) {
 				l.error(e.getMessage());
 			}
-		} */
+		} 
 		
 
-		/*@Test
+		@Test
 		public void testDeleteDepartementById()  {
-			l.info("Starting delete Department test method");
-			Departement D = new Departement("Info");
-			int Id = ds.ajouterDepartement(D);
-			l.info("Adding new Department with id : " + Id);
-			Departement Dept = ds.getDepartementById(Id);
-			assertNotNull(Dept);
-			int lengthBeforeDelete = ds.getAllDepartements().size();
-			l.info("Department with id " + Id + " exists" );
-			ds.deleteDepartementById(Id);
-			assertEquals(lengthBeforeDelete-1 , ds.getAllDepartements().size());
-			l.info("Department deleted successfuly");
+			l.info("Starting delete Concour test method");
+			Concour C = new Concour(new Date(), 15, "Admission chef Departement");
+			int idcandidat = cs.ajouterConcour(C);
+			l.info("Adding new Concour with id : " + idcandidat);
+			Optional<Concour> con = cs.getconcourbycandidat(idcandidat);
+			assertNotNull(con);
+			int lengthBeforeDelete = cs.getAllConcours().size();
+			l.info("Department with id " + idcandidat + " exists" );
+			cs.deleteConcourById(idcandidat);
+			assertEquals(lengthBeforeDelete-1 , cs.getAllConcours().size());
+			l.info("Concour deleted successfuly");
 		}
 		
 			
-		@Test
+		/*@Test
 		public void testGetConcourById() throws ParseException{
 			l.info("Starting find Departement test method");
 			
