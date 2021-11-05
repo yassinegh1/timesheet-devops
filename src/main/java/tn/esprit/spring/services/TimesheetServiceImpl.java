@@ -18,7 +18,7 @@ import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.MissionRepository;
 import tn.esprit.spring.repository.TimesheetRepository;
-
+@Transactional
 @Service
 public class TimesheetServiceImpl implements ITimesheetService {
 	
@@ -100,6 +100,21 @@ public class TimesheetServiceImpl implements ITimesheetService {
 	
 	public List<Employe> getAllEmployeByMission(int missionId) {
 		return timesheetRepository.getAllEmployeByMission(missionId);
+	}
+	@Override
+	public void deleteMissionById(int id) {
+		missionRepository.deleteMissionById(id);
+	}
+	//
+	@Override
+	public Mission getMissionById(int id) {
+		return missionRepository.getMissionById(id);
+	}
+
+	//
+	@Override
+	public List<Mission> getAllMission(int id) {
+		return missionRepository.getAllMissionById(id);
 	}
 
 }
