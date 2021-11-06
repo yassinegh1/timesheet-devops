@@ -4,13 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
@@ -27,7 +25,9 @@ import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 import tn.esprit.spring.services.IEmployeService;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @ContextConfiguration(classes = TimesheetSpringBootCoreDataJpaMvcRest1Application.class)
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -49,9 +49,9 @@ public class EmployeServiceImplTest {
 	DepartementRepository depRepo;
 
 
-
+	
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void addEmployeTest() {
+	public void test1addEmployeTest() {
 		try {
 			l.info("Begin addEmployeTest() : ");
 
@@ -66,7 +66,7 @@ public class EmployeServiceImplTest {
 	}
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testAddEmployeeToDepartement() {
+	public void test2AddEmployeeToDepartement() {
 
 		try {
 			l.info("Begin addEmployeeToDepartementTest(). ");
@@ -80,7 +80,7 @@ public class EmployeServiceImplTest {
 	}
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testRemoveEmployeeFromDepartement() {
+	public void test3RemoveEmployeeFromDepartement() {
 		try {
 			l.info("Begin removeEmployeeFromDepartementTest().");
 			empService.desaffecterEmployeDuDepartement(1, 1);
@@ -93,7 +93,7 @@ public class EmployeServiceImplTest {
 
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testGetEmployeeNameById() {
+	public void test4GetEmployeeNameById() {
 		try {
 			l.info("Begin getEmployeeNameByIdTest(). ");
 			String name = empService.getEmployePrenomById(1);
@@ -107,11 +107,13 @@ public class EmployeServiceImplTest {
 
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testGetAllEmployeesByEntreprise() {
+	public void test5GetAllEmployeesByEntreprise() {
 		try {
 			l.info("Begin getAllEmplyeesByEntreprise() : ");
-			Entreprise ent = entRepo.findById(1).get();
-			List<Employe> emps = empService.getAllEmployeByEntreprise(ent);
+			Entreprise e = new Entreprise("test", "test");
+			entRepo.save(e);
+			Entreprise entr = entRepo.findById(1).get();
+			List<Employe> emps = empService.getAllEmployeByEntreprise(entr);
 			l.info("getAllEmployeByEntreprise : " + emps);
 			l.info("End of getAllEmplyeesByEntreprise() without errors.");
 		} catch (Exception e) {
@@ -120,13 +122,14 @@ public class EmployeServiceImplTest {
 	}
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testUpdateEmailByEmpId() {
+	public void test6UpdateEmailByEmpId() {
 		try {
 			l.info("Begin updateEmailByEmpId() : ");
 			empService.mettreAjourEmailByEmployeId("yassine@gmail.com", 1);
 			Optional<Employe> em = empRepo.findById(1);
 			if (em.isPresent()) {
 				assertThat(em.get().getEmail()).isEqualTo("yassine@gmail.com");}
+			l.info("Email updated successfully ");
 			l.info("End of updateEmailByEmpId() without errors.");
 		} catch (Exception e) {
 			l.error("Error in updateEmailByEmpId() : " + e);
@@ -135,11 +138,12 @@ public class EmployeServiceImplTest {
 
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testGetEmployeesNumber() {
+	public void test7GetEmployeesNumber() {
 		try {
 			l.info("Begin getEmployeesNumberTest(). ");
 			int Nbr = empService.getNombreEmployeJPQL();
 			assertNotNull(Nbr);
+			l.info("The employees number is " + Nbr);
 			l.info("End of getEmployeesNumberTest() without errors.");
 		} catch (Exception e) {
 			l.error("Error in getEmployeesNumberTest() : " + e);
@@ -147,7 +151,7 @@ public class EmployeServiceImplTest {
 	}
 	
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testGetAllEmployees() {
+	public void test8GetAllEmployees() {
 		try {
 			l.info("Begin getAllEmployees(). ");
 			List<Employe> emps = empService.getAllEmployes();
@@ -159,7 +163,7 @@ public class EmployeServiceImplTest {
 	}
 	
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testDeleteEmployeeById() {
+	public void test9DeleteEmployeeById() {
 		try {
 			l.info("Begin deleteEmployeeByIdTest(). ");
 			empService.deleteEmployeById(1);
