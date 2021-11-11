@@ -30,7 +30,6 @@ import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 
-@SpringBootTest
 public class EntrepriseServiceImplTest {
 	private static final Logger l = LogManager.getLogger(EntrepriseServiceImplTest.class);
 	
@@ -44,7 +43,6 @@ public class EntrepriseServiceImplTest {
 
 	
 	
-	@Test
  	public void testAjouterEntreprise() {
 		try {
 			Entreprise e = new Entreprise(1, "esprit");
@@ -60,7 +58,7 @@ public class EntrepriseServiceImplTest {
 		
 	}
 	
-	@Test
+	
 	public void testAjouterDepartement() {
 	
 		try {
@@ -106,7 +104,7 @@ public class EntrepriseServiceImplTest {
 		assertNull(es.getEntrepriseById(3));
 			}*/
 	
-	@Test()
+	
 	public void testGetEntrepriseById() {
 		try {
 
