@@ -13,16 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import tn.esprit.spring.Bus.entities.Bus;
-import tn.esprit.spring.Bus.services.BusServiceImpl;
+import tn.esprit.spring.entities.Bus;
+import tn.esprit.spring.services.BusServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BusApplicationTests {
-
-	/*@Test
-	void contextLoads() {
-	}*/
 	
 	private static final Logger l = LogManager.getLogger(BusApplicationTests.class);
 	
@@ -36,7 +32,7 @@ public class BusApplicationTests {
 		BS.ajouterBus(B);
 		Long BusId = B.getId();
 		assertNotNull(BusId);
-		BS.DeleteBus(BusId);
+		BS.deleteBus(BusId);
 		l.info("End add Bus test method");
 		} catch (NullPointerException e) {
 			l.error(e.getMessage());
@@ -67,11 +63,11 @@ public class BusApplicationTests {
 		
 		l.info("Adding new Bus with id : " + B.getId());
 		
-		Bus bus = BS.GetBusByID(B.getId());
+		Bus bus = BS.getBusByID(B.getId());
 		assertNotNull(bus);
 		int lengthBeforeDelete = BS.getAllBus().size();
 		l.info("Department with id " + B.getId() + " exists" );
-		BS.DeleteBus(B.getId());
+		BS.deleteBus(B.getId());
 		assertEquals(lengthBeforeDelete-1 , BS.getAllBus().size());
 		l.info("Bus with id: "+ B.getId() +" deleted successfuly");
 	}
@@ -82,12 +78,12 @@ public class BusApplicationTests {
 		Bus B = new Bus("Raoued", LocalTime.of(8,30,00), LocalTime.of(17,30,00));
 		BS.ajouterBus(B);
 		
-		assertNotNull(BS.GetBusByID(B.getId()));
+		assertNotNull(BS.getBusByID(B.getId()));
 		l.info("Bus with id " + B.getId() + " added" );
 		
 		Bus existingBus = BS.getBusByDestination(B.getDestination());
 		assertNotNull(existingBus);	
 		l.info("Bus with Destination " + existingBus.getDestination() + " found successfully" );
-		BS.DeleteBus(existingBus.getId());
+		BS.deleteBus(existingBus.getId());
 		}
 }
