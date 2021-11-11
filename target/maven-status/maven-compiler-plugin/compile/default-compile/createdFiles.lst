@@ -11,6 +11,7 @@ tn\esprit\spring\services\IEmployeService.class
 tn\esprit\spring\entities\Mission.class
 tn\esprit\spring\entities\TimesheetPK.class
 tn\esprit\spring\repository\ContratRepository.class
+tn\esprit\spring\services\DepartementServicelmpl.class
 tn\esprit\spring\services\EntrepriseServiceImpl.class
 tn\esprit\spring\entities\Contrat.class
 tn\esprit\spring\entities\Entreprise.class
@@ -23,4 +24,5 @@ tn\esprit\spring\ServletInitializer.class
 tn\esprit\spring\services\TimesheetServiceImpl.class
 tn\esprit\spring\controller\RestControlEmploye.class
 tn\esprit\spring\entities\Role.class
+tn\esprit\spring\services\IDepartmentService.class
 tn\esprit\spring\repository\EmployeRepository.class
