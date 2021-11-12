@@ -44,5 +44,14 @@ script {
 docker.withRegistry( '', registryCredential ) {
    dockerImage.push()}}}}
 }
+  
+    post {
+        success {
+    emailext attachLog: true, body: '''End of Pipeline
+Finished: SUCCESS''', subject: '#Success', to: 'aymen.ghorbel1@esprit.tn'}
+    failure  {
+    emailext attachLog: true, body: '''End of Pipeline
+Finished: FAILURE''', subject: '#Failure', to: 'aymen.ghorbel1@esprit.tn'}
+    } 
     
 }
