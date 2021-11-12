@@ -7,7 +7,7 @@ dockerImage = '' }
 stages {
 stage("Cloning Project from Git") {
 steps { 
-git branch: 'aymen', credentialsId: 'GitCredentials', url: 'https://github.com/Achraf429/timesheet-devops.git'
+git branch: 'ayme', credentialsId: 'GitCredentials', url: 'https://github.com/Achraf429/timesheet-devops.git'
 }}
 stage("Build") {
 steps {
@@ -48,10 +48,10 @@ docker.withRegistry( '', registryCredential ) {
     post {
         success {
     emailext attachLog: true, body: '''End of Pipeline
-Finished: SUCCESS''', subject: '#Success', to: 'aymen.ghorbel1@esprit.tn'}
+Finished: SUCCESS''', subject: '#Success', to: 'aymen.ghorbel125@gmail.com'}
     failure  {
     emailext attachLog: true, body: '''End of Pipeline
-Finished: FAILURE''', subject: '#Failure', to: 'aymen.ghorbel1@esprit.tn'}
+Finished: FAILURE''', subject: '#Failure', to: 'aymen.ghorbel125@gmail.com'}
     } 
     
 }
