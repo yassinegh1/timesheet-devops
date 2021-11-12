@@ -9,11 +9,11 @@ pipeline{
 
 		agent any 
 	stages{
-		stage ('Checkout GIT'){
+		stage ('ChECKOUt GIT'){
 			steps{
 				echo 'Pulling...';
 					git branch: 'yassine',
-					url : 'https://github.com/yassinegh1/timesheet-devops.git';
+					url : 'https://github.com/yassinegh1/timesheet-devops';
 			}
 		}
 
@@ -22,6 +22,7 @@ pipeline{
 				bat """mvn -version"""
 			}
 		}
+
 
 
 		 stage ("clean"){
