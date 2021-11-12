@@ -8,9 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
@@ -51,27 +49,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		return dep.getId();
 	}
 	
-	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
-		//Le bout Master de cette relation N:1 est departement  
-				//donc il faut rajouter l'entreprise a departement 
-				// ==> c'est l'objet departement(le master) qui va mettre a jour l'association
-				//Rappel : la classe qui contient mappedBy represente le bout Slave
-				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
-		try {
-			l.info("In affecterDepartementAEntreprise method");	
-				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
-				Departement depManagedEntity = deptRepoistory.findById(depId).get();
-				
-				depManagedEntity.setEntreprise(entrepriseManagedEntity);
-				deptRepoistory.save(depManagedEntity);
-				l.info("Out of affecterDepartementAEntreprise method");	
-
-		}
-		catch(Exception e){
-			l.error("Error in affecterDepartementAEntreprise method", e);
-		}
-	}
-	
+		
 	public List<String> getAllDepartementsNamesByEntreprise(int entrepriseId) {
 		List<String> depNames = new ArrayList<>();
 
@@ -79,7 +57,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 			
 			l.info("In getAllDepartementsNamesByEntreprise method");	
 
-		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).get();
+		Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(new Entreprise());
 		for(Departement dep : entrepriseManagedEntity.getDepartements()){
 			depNames.add(dep.getName());
 		}
@@ -96,7 +74,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	public void deleteEntrepriseById(int entrepriseId) {
 		try {
 			l.info("In deleteEntrepriseById method");	
-		entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).get());	
+		entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).orElse(new Entreprise()));	
 		l.info("Out of deleteEntrepriseById method");
 
 		}
@@ -106,25 +84,13 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		
 	}
 
-	@Transactional
-	public void deleteDepartementById(int depId) {
-		try {
-			l.info("In deleteDepartementById method");
-		deptRepoistory.delete(deptRepoistory.findById(depId).get());
-		l.info("Out of deleteDepartementById method");
-		}
-		catch(Exception e){
-			l.error("Error in deleteDepartementById method", e);
-		}
-		
-	}
-
+	
 
 	public Entreprise getEntrepriseById(int entrepriseId) {
 		Entreprise x=null ;
 		try {
 			l.info("In getEntrepriseById method");
-		 x=entrepriseRepoistory.findById(entrepriseId).get();
+		 x=entrepriseRepoistory.findById(entrepriseId).orElse(new Entreprise());
 			l.info("Out of getEntrepriseById method");
 		}
 		catch(Exception e){

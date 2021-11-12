@@ -1,36 +1,28 @@
 package tn.esprit.spring.services;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.*;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
-import java.util.List;
-import java.util.Optional;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.assertj.core.api.Assertions;
-import org.junit.Before;
+
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.core.annotation.Order;
-
-import javassist.NotFoundException;
-import junit.framework.*;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
 
+@RunWith(SpringRunner.class)
+
 @SpringBootTest
+
 public class EntrepriseServiceImplTest {
 	private static final Logger l = LogManager.getLogger(EntrepriseServiceImplTest.class);
 	
@@ -76,35 +68,6 @@ public class EntrepriseServiceImplTest {
 		}
 		
 	
-	/*@Test
-	public void testAffecterDepartementAEntreprise() {
-		
-	}*/
-/*	@Test
-	public void testGetAllDepartementsNamesByEntreprise() {
-		 List<String> listDep = es.getAllDepartementsNamesByEntreprise(entrepriseId)
-	}*/
-	
-/*	@Test
-	public void testDeleteEntrepriseById() {
-		l.info("Starting delete Entreprise test method");
-		Entreprise e = new Entreprise("test");
-		int id = es.ajouterEntreprise(e);
-		Entreprise ent = es.getEntrepriseById(id);
-		assertNotNull(ent);
-		//int lengthBeforeDelete = ((Object) er.findAll()).size();
-		es.deleteDepartementById(id);
-		
-		
-	//	es.deleteEntrepriseById(1);
-		//assertNull(es.getEntrepriseById(1));
-	}*/
-	
-	/*@Test
-	public void testDeleteDepartementById() {
-		es.deleteDepartementById(3);
-		assertNull(es.getEntrepriseById(3));
-			}*/
 	
 	@Test()
 	public void testGetEntrepriseById() {
@@ -118,5 +81,9 @@ public class EntrepriseServiceImplTest {
 				l.error("error get entreprise "+e.getMessage());
 			}
 		}
+	
+	
+	
+	
 	
 }
